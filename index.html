@@ -23,6 +23,7 @@
         <script src="js/main.js"></script>
 
         <script src="js/game.js"></script>
+        <script src="js/levels.js"></script>
         <script src="js/map.js"></script>
         <script src="js/wizard.js"></script>
         <script src="js/utils.js"></script>
@@ -43,42 +44,14 @@
         
         <script>
         
-        gameMap.setDisplayContainer($('#maproot')).init().display().loadTextMap([
-          '                                                  ',
-          ' XXXXXXXXXXXXXXX                                  ',
-          ' X             XXXXXXXXXXXXXXXX                   ',
-          ' X             X              X                   ',
-          ' X             X              X                   ',
-          ' X             X              X                   ',
-          'XXXX XXXXXX  XXXXXXXX  XXXXXXXXXXXX               ',
-          'X                                                 ',
-          'X                                                 ',
-          'XXXX XXXXXX  XXXXXXXX  XXXXX  XXXXX               ',
-          'X              X         X      X                 ',
-          'X              X         X      X                 ',
-          'X              X         X      X                 ',
-          'X              X         X      X                 ',
-          'X   XXXXXXXXXXXX         X      X                 ',
-          'XXXXX                    X      X                 ',
-          '    X                    X      X                 ',
-          '    X                    X      X                 ',
-          '    X                    X      X                 ',
-          '    XXXXXXXXXXXXXXXXXXXXXX      X                 ',
-          '                                                  ',
-          '                                                  ',
-          '                                                  ',
-          '                                                  ',
-          '                                                  ',
-          '                                                  ',
-          '                                                  ',
-          ]);
+        gameMap.setDisplayContainer($('#maproot')).init().display().loadMapLevel(levelData[0]);
         game.tick();
         
-        for(var i = 0; i < 10; i++) {
+        /*for(var i = 0; i < 10; i++) {
           var testWizard = makeWizard({ pos : { x : i+2, y : 5} });
           testWizard.update();
-          testWizard.walkTo(rand(5, 35), rand(5, 35));
-        }
+          testWizard.walkTo(rand(gameState.gridSize.x), rand(gameState.gridSize.y));
+        }*/
 
         </script>
 

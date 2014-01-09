@@ -64,6 +64,7 @@ var makeWizard = function(wizParams) {
     
   gameState.units[wizardObject.id] = wizardObject;
   wizardObject.domLink = wizardController.makeDomObject(wizardObject, mapState.container);
+  wizardObject.update();  
     
   return(wizardObject);
   

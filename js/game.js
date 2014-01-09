@@ -1,13 +1,14 @@
 var config = {
   
   tileSize : 24,
-  gridSize : 50
   
   };
 
 var gameState = {
   
   units : {},
+
+  gridSize : { x : 10, y : 10 },
   
   };
   
