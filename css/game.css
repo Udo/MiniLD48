@@ -26,6 +26,11 @@ h1 {
   position: absolute;
   left: 100px;
   top: 100px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .wizard {
   background: rgba(40, 20, 0, 0.6);
