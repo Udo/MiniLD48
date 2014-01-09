@@ -21,7 +21,9 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
+        <script src="js/game.js"></script>
         <script src="js/map.js"></script>
+        <script src="js/wizard.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -41,6 +43,8 @@
         
         gameMap.setDisplayContainer($('#map')).init().display();
         
+        var testWizard = makeWizard({});
+        testWizard.display();
 
         </script>
 

@@ -14,6 +14,10 @@ var gameMap = {
   display : function() {
 
     return(this);
-    }  
+    },
+    
+  update : function() {
+    
+    },
   
   };
