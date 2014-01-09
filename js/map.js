@@ -27,7 +27,7 @@ var gameMap = {
     
   makeCell : function(cellInfo) {
     
-    mapState.container.append('<div class="mapblock" style="left:'+(cellInfo.pos.x*config.tileSize)+'px;top:'+(cellInfo.pos.y*config.tileSize)+'px;"> </div>');
+    mapState.container.append('<div class="'+cellInfo.sclass+'" style="left:'+(cellInfo.pos.x*config.tileSize)+'px;top:'+(cellInfo.pos.y*config.tileSize)+'px;"> </div>');
     mapState.pfGrid.setWalkableAt(cellInfo.pos.x, cellInfo.pos.y, false);
     
     },
@@ -48,7 +48,10 @@ var gameMap = {
         
         switch(ch) {
           case 'X':
-            gameMap.makeCell({ pos : { x : x, y : y } });
+            gameMap.makeCell({ pos : { x : x, y : y }, sclass : 'mapblock' });
+            break;
+          case 'x':
+            gameMap.makeCell({ pos : { x : x, y : y }, sclass : 'mapblock desk' });
             break;
         }        
         

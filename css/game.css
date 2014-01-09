@@ -40,23 +40,30 @@ h1 {
   transition: all 1s ease-in-out;
 }
 .wizard {
-  background: rgba(100, 0, 0, 0.5);
+  background: rgba(100, 0, 0, 0.4);
   border-radius: 12px;
-  color: rgba(250, 180, 160, 0.6);
+  color: rgba(250, 180, 160, 0.4);
   padding: 4px;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 .wizdot {
   background: rgba(0, 70, 140, 0.25);
   border-radius: 8px;
-  padding: 2px;
-  width: 8px;
-  height: 8px;
-  margin: 6px;
+  padding: 1px;
+  width: 6px;
+  height: 6px;
+  margin: 8px;
 }
 .mapblock {
   width: 24px;
   height: 24px;
   background: rgba(80, 60, 40, 0.6);
+}
+.desk {
+  background: rgba(80, 80, 60, 0.4);
+  border-radius: 4px;
+  margin: 2px;
+  width: 20px;
+  height: 20px;
 }
