@@ -8,6 +8,8 @@ var gameMap = {
     },
     
   init : function() {
+    mapState.pfGrid = new PF.Grid(config.gridSize, config.gridSize);
+    mapState.pathFinder = new PF.AStarFinder({});
     return(this);
     },
     

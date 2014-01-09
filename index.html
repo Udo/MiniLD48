@@ -18,6 +18,7 @@
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/pathfinding-browser.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
@@ -42,9 +43,11 @@
         <script>
         
         gameMap.setDisplayContainer($('#map')).init().display();
+        game.tick();
         
         var testWizard = makeWizard({});
-        testWizard.display();
+        testWizard.update();
+        testWizard.walkTo(16, 8);
 
         </script>
 

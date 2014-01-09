@@ -9,7 +9,16 @@ var wizardController = {
   
     },
   
-  display : function(wiz) {
+  update : function(wiz) {
+  
+    if(wiz.path) {
+      var nextPos = wiz.path.shift();
+      wiz.pos.x = nextPos[0];
+      wiz.pos.y = nextPos[1];
+      if(wiz.path.length == 0) {
+        wiz.path = false;
+      } 
+    }
   
     wiz.domLink
       .css('left', config.tileSize*wiz.pos.x)
@@ -17,9 +26,9 @@ var wizardController = {
   
     },
     
-  walkTo : function(wiz) {
+  walkTo : function(wiz, x, y) {
     
-    
+    wiz.path = mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, mapState.pfGrid);
     
     },
     
@@ -28,10 +37,12 @@ var wizardController = {
 var makeWizard = function(wizParams) {
   
   var wizardObject = { 
+    type : 'wizard',
     id : wizardCounter++,
+    path : false,
     pos : { x : 10, y : 10 },
-    display : function() { wizardController.display(wizardObject);},
-    walkTo : function() { wizardController.walkTo(wizardObject); },
+    update : function() { wizardController.update(wizardObject);},
+    walkTo : function(x, y) { wizardController.walkTo(wizardObject, x, y); },
     };
     
   gameState.units[wizardObject.id] = wizardObject;
