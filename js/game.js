@@ -37,8 +37,9 @@ var game = {
       }
         
     },
-  
+    
   tick : function() {
+
     gameState.tickCount++;
     $('#tick_timer').text(gameState.tickCount);
     

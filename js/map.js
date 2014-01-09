@@ -1,4 +1,8 @@
-var mapState = {};
+var mapState = {
+  
+  doomList : [],
+  
+  };
 
 var gameMap = {
   
@@ -64,6 +68,29 @@ var gameMap = {
   findFreeCell : function(possiblePositions) {
     if(possiblePositions.length == 0) return false;
     return(possiblePositions.splice(rand(possiblePositions.length-1), 1)[0]);        
+    },
+    
+  isOccupied : function(x, y) {
+    var occupied = false;
+    if(!mapState.pfGrid.isWalkableAt(x, y)) return(true);
+    $.each(gameState.units, function(idx, unit) {
+      if(unit.pos.x == x && unit.pos.y == y) {
+        occupied = true;
+        //console.log('occupied: '+JSON.stringify(unit.pos));
+      }
+      });
+    return(occupied);
+    },
+    
+  getGrid : function(ignoreUnits) {
+    
+    var result = mapState.pfGrid.clone();
+    if(!ignoreUnits)
+      $.each(gameState.units, function(idx, unit) {
+        result.setWalkableAt(unit.pos.x, unit.pos.y, false);
+        });
+    return(result);
+    
     },
   
   };

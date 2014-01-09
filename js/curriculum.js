@@ -16,7 +16,6 @@ var curriculum = {
     $.each(gameState.units, function(idx, unit) {
       
       var ps = gameMap.findFreeCell(targetPositions);
-      console.log(JSON.stringify(ps));
       if(ps) unit.walkTo(ps.pos.x, ps.pos.y);
       
       });

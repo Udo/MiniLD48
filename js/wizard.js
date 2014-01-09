@@ -2,10 +2,13 @@ var wizardCounter = 1;
 
 var wizardController = {
   
-  makeDomObject : function(wiz, container) {
+  makeDomObject : function(sclass, xp, yp) {
   
-    container.append('<div id="wid-'+wiz.id+'" class="gameunit wizard" data-wid="'+wiz.id+'">W</div>');
-    return($('#wid-'+wiz.id));
+    var result = $('<div style="'+
+      'left:'+(config.tileSize*xp)+'px;'+
+      'top:'+(config.tileSize*yp)+'px;'+
+      '" class="'+sclass+'"></div>').appendTo(mapState.container);
+    return(result);
   
     },
   
@@ -21,22 +24,33 @@ var wizardController = {
       } 
       else {
         var nextPos = wiz.path.shift();
-        wiz.pos.x = nextPos[0];
-        wiz.pos.y = nextPos[1];
+        if(nextPos && nextPos.length > 0) {
+          wiz.pos.x = nextPos[0];
+          wiz.pos.y = nextPos[1];
+        }
       }
     }
   
-    wiz.domLink
-      .css('left', config.tileSize*wiz.pos.x)
-      .css('top', config.tileSize*wiz.pos.y);
-  
+    if(wiz.pos.x != wiz.oldPos.x || wiz.pos.y != wiz.oldPos.y) {
+      expire(6000, wizardController.makeDomObject('wizdot', wiz.oldPos.x, wiz.oldPos.y));
+      wiz.domElement
+        .css('left', config.tileSize*wiz.pos.x)
+        .css('top', config.tileSize*wiz.pos.y);
+      wiz.oldPos.x = wiz.pos.x;
+      wiz.oldPos.y = wiz.pos.y;
+    }
+      
+    },
+    
+  getPath : function(wiz, x, y) {
+    return(
+      mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, gameMap.getGrid(true)));    
     },
     
   walkTo : function(wiz, x, y, whenFinishedCall) {
     
-    console.log('walk from '+wiz.pos.x+':'+wiz.pos.y+' to '+x+':'+y);
-    
-    wiz.path = mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, mapState.pfGrid.clone());
+    wiz.destination = { x : x, y : y };
+    wiz.path = wizardController.getPath(wiz, x, y);
     if(wiz.path) {
       wiz.pathFinished = whenFinishedCall;
     }
@@ -66,6 +80,7 @@ var makeWizard = function(wizParams) {
     id : wizardCounter++,
     path : false,
     pos : { x : 20, y : 20 },
+    oldPos : { x : 20, y : 20 },
     update : function() { wizardController.update(wizardObject);},
     walkTo : function(x, y, whenFinishedCall) { wizardController.walkTo(wizardObject, x, y, whenFinishedCall); },
     };
@@ -75,8 +90,7 @@ var makeWizard = function(wizParams) {
     });
     
   gameState.units[wizardObject.id] = wizardObject;
-  wizardObject.domLink = wizardController.makeDomObject(wizardObject, mapState.container);
-  wizardObject.update();  
+  wizardObject.domElement = wizardController.makeDomObject('gameunit wizard', wizardObject.x, wizardObject.y);
     
   return(wizardObject);
   
