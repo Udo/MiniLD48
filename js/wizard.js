@@ -34,6 +34,8 @@ var wizardController = {
     
   walkTo : function(wiz, x, y, whenFinishedCall) {
     
+    console.log('walk from '+wiz.pos.x+':'+wiz.pos.y+' to '+x+':'+y);
+    
     wiz.path = mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, mapState.pfGrid.clone());
     if(wiz.path) {
       wiz.pathFinished = whenFinishedCall;
@@ -44,7 +46,17 @@ var wizardController = {
     }
     
     },
+
+  initWizardsFromMap : function(mapElementChar) {
     
+    if(mapState.positionIndex[mapElementChar]) $.each(mapState.positionIndex[mapElementChar], function(idx, v) {
+      
+      var newWizard = makeWizard({ pos : { x : v.pos.x, y : v.pos.y } });
+      
+      });
+    
+    },
+        
   };
 
 var makeWizard = function(wizParams) {

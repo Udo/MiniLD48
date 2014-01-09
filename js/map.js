@@ -27,8 +27,9 @@ var gameMap = {
     mapState.pfGrid.setWalkableAt(cellInfo.pos.x, cellInfo.pos.y, false);
     
     },
-
+    
   loadMapLevel : function(mapLevel) {
+    gameState.tickCount = 0;
     gameState.currentLevel = mapLevel;
     var textLines = mapLevel.floorPlan;
     gameState.gridSize = { y : textLines.length+1, x : textLines[0].length+1};
@@ -56,17 +57,13 @@ var gameMap = {
       
       });
     
-      gameMap.initWizardsFromMap(mapLevel.initWizardsFrom);    
+      wizardController.initWizardsFromMap(mapLevel.initWizardsFrom);    
+      curriculum.initCurriculum();
     },
     
-  initWizardsFromMap : function(mapElementChar) {
-    
-    if(mapState.positionIndex[mapElementChar]) $.each(mapState.positionIndex[mapElementChar], function(idx, v) {
-      
-      var newWizard = makeWizard({ pos : { x : v.pos.x, y : v.pos.y } });
-      
-      });
-    
+  findFreeCell : function(possiblePositions) {
+    if(possiblePositions.length == 0) return false;
+    return(possiblePositions.splice(rand(possiblePositions.length-1), 1)[0]);        
     },
   
   };

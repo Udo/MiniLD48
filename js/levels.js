@@ -27,5 +27,13 @@ levelData.push({
           ],
   
   initWizardsFrom : 'a',
+  
+  curriculum : {
+    
+    timer : [
+      { time : 1, who : 'student', action : 'go', to : ['a', 'b'] },
+      ],    
+    
+    },
     
   });
