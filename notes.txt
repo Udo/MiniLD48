@@ -1,0 +1,13 @@
+Okay, what are we going to do... facade, scheme, conspiracy, deceit!
+
+I know: scheming wizards! A social simulation where you are playing the bad guy who has to keep the lid on the conspiracy!
+
+You're an evil professor at Dorkwads, the school for pretentious little wizards. Your mission is to conjure the dark gods
+and to keep those meddling kids from figuring out what you're up to.
+
+Things we need:
+- school map
+  - students and staff going about their business
+  - ...
+  - profit!
+  
