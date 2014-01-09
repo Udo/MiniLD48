@@ -1,10 +1,24 @@
 body {
   background: #000;
   color: #876;
-  font-size: 13px;
+  font-size: 16px;
   padding:0;
   margin: 0;
 }
 * {
   font-family: Trebuchet MS, Arial, sans-serif;
+}
+#page-wrap {
+  padding: 8px;
+}
+h1 {
+  margin: 0;
+  border-bottom: 1px solid #876;
+  margin-bottom: 8px;
+}
+#map {
+  background: url('../img/paper2.jpg');
+  height: 700px;
+  margin: 8px;
+  color: rgba(40, 20, 0, 0.6);
 }
