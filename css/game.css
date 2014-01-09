@@ -10,6 +10,9 @@ body {
 }
 #page-wrap {
   padding: 8px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 h1 {
   margin: 0;
@@ -21,6 +24,7 @@ h1 {
   height: 700px;
   margin: 8px;
   color: rgba(40, 20, 0, 0.6);
+  overflow: auto;
 }
 #maproot {
   position: relative;
@@ -29,8 +33,6 @@ h1 {
 }
 .gameunit, .mapblock, .wizdot {
   position: absolute;
-  left: 100px;
-  top: 100px;
 }
 .gameunit {
   -webkit-transition: all 1s ease-in-out;

@@ -2,6 +2,7 @@ var levelData = [];
 
 levelData.push({
   floorPlan : [
+          'X                     X    X                      X',
           'XXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXXXXXXXXXXXXXX',
           'X    xa xa xa xa      X    X      xa xa xa xa     X',
           'X A  xa xa xa xa      X    X      xa xa xa xa  A  X',

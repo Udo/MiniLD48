@@ -79,8 +79,8 @@ var makeWizard = function(wizParams) {
     type : 'wizard',
     id : wizardCounter++,
     path : false,
-    pos : { x : 20, y : 20 },
-    oldPos : { x : 20, y : 20 },
+    pos : { x : Math.round(gameState.gridSize.x/2), y : Math.round(gameState.gridSize.y/2) },
+    oldPos : { x : Math.round(gameState.gridSize.x/2), y : Math.round(gameState.gridSize.y/2) },
     update : function() { wizardController.update(wizardObject);},
     walkTo : function(x, y, whenFinishedCall) { wizardController.walkTo(wizardObject, x, y, whenFinishedCall); },
     };
