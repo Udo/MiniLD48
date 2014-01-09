@@ -36,14 +36,42 @@
           <h1>Meddling Little Wizards</h1>
   
           <div id="map">
-            
+            <div id="maproot"></div>         
           </div>
         
         </div>
         
         <script>
         
-        gameMap.setDisplayContainer($('#map')).init().display();
+        gameMap.setDisplayContainer($('#maproot')).init().display().loadTextMap([
+          '                                                  ',
+          ' XXXXXXXXXXXXXXX                                  ',
+          ' X             XXXXXXXXXXXXXXXX                   ',
+          ' X             X              X                   ',
+          ' X             X              X                   ',
+          ' X             X              X                   ',
+          'XXXX XXXXXX  XXXXXXXX  XXXXXXXXXXXX               ',
+          'X                                                 ',
+          'X                                                 ',
+          'XXXX XXXXXX  XXXXXXXX  XXXXX  XXXXX               ',
+          'X              X         X      X                 ',
+          'X              X         X      X                 ',
+          'X              X         X      X                 ',
+          'X              X         X      X                 ',
+          'X   XXXXXXXXXXXX         X      X                 ',
+          'XXXXX                    X      X                 ',
+          '    X                    X      X                 ',
+          '    X                    X      X                 ',
+          '    X                    X      X                 ',
+          '    XXXXXXXXXXXXXXXXXXXXXX      X                 ',
+          '                                                  ',
+          '                                                  ',
+          '                                                  ',
+          '                                                  ',
+          '                                                  ',
+          '                                                  ',
+          '                                                  ',
+          ]);
         game.tick();
         
         for(var i = 0; i < 10; i++) {
