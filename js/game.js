@@ -1,7 +1,7 @@
 var config = {
   
   tileSize : 24,
-  gridSize : 32
+  gridSize : 50
   
   };
 

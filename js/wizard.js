@@ -12,12 +12,18 @@ var wizardController = {
   update : function(wiz) {
   
     if(wiz.path) {
-      var nextPos = wiz.path.shift();
-      wiz.pos.x = nextPos[0];
-      wiz.pos.y = nextPos[1];
-      if(wiz.path.length == 0) {
+      if(!wiz.path.shift || wiz.path.length == 0) {
         wiz.path = false;
+        if(wiz.pathFinished) {
+          wiz.pathFinished(wiz, true);
+          wiz.pathFinished = false;
+        }
       } 
+      else {
+        var nextPos = wiz.path.shift();
+        wiz.pos.x = nextPos[0];
+        wiz.pos.y = nextPos[1];
+      }
     }
   
     wiz.domLink
@@ -26,9 +32,16 @@ var wizardController = {
   
     },
     
-  walkTo : function(wiz, x, y) {
+  walkTo : function(wiz, x, y, whenFinishedCall) {
     
-    wiz.path = mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, mapState.pfGrid);
+    wiz.path = mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, mapState.pfGrid.clone());
+    if(wiz.path) {
+      wiz.pathFinished = whenFinishedCall;
+    }
+    else {
+      wiz.path = false;
+      whenFinishedCall(wiz, false);
+    }
     
     },
     
@@ -40,10 +53,14 @@ var makeWizard = function(wizParams) {
     type : 'wizard',
     id : wizardCounter++,
     path : false,
-    pos : { x : 10, y : 10 },
+    pos : { x : 20, y : 20 },
     update : function() { wizardController.update(wizardObject);},
-    walkTo : function(x, y) { wizardController.walkTo(wizardObject, x, y); },
+    walkTo : function(x, y, whenFinishedCall) { wizardController.walkTo(wizardObject, x, y, whenFinishedCall); },
     };
+    
+  $.each(wizParams, function(idx, p) {
+    wizardObject[idx] = p;
+    });
     
   gameState.units[wizardObject.id] = wizardObject;
   wizardObject.domLink = wizardController.makeDomObject(wizardObject, mapState.container);

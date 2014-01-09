@@ -25,6 +25,7 @@
         <script src="js/game.js"></script>
         <script src="js/map.js"></script>
         <script src="js/wizard.js"></script>
+        <script src="js/utils.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -45,9 +46,11 @@
         gameMap.setDisplayContainer($('#map')).init().display();
         game.tick();
         
-        var testWizard = makeWizard({});
-        testWizard.update();
-        testWizard.walkTo(16, 8);
+        for(var i = 0; i < 10; i++) {
+          var testWizard = makeWizard({ pos : { x : i+2, y : 5} });
+          testWizard.update();
+          testWizard.walkTo(rand(5, 35), rand(5, 35));
+        }
 
         </script>
 
