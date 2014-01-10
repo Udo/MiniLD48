@@ -49,6 +49,14 @@ h1 {
   width: 14px;
   height: 14px;
 }
+.deadbody {
+  background: rgba(30, 30, 30, 0.5);
+  border-radius: 12px;
+  color: rgba(250, 180, 160, 0.4);
+  padding: 4px;
+  width: 14px;
+  height: 14px;
+}
 .wizdot {
   background: rgba(0, 70, 140, 0.25);
   border-radius: 8px;
@@ -68,4 +76,12 @@ h1 {
   margin: 2px;
   width: 20px;
   height: 20px;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #a97
 }

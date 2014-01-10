@@ -34,6 +34,7 @@ var gameMap = {
     
   loadMapLevel : function(mapLevel) {
     gameState.tickCount = 0;
+    gameState.units = [];
     gameState.currentLevel = mapLevel;
     var textLines = mapLevel.floorPlan;
     gameState.gridSize = { y : textLines.length+1, x : textLines[0].length+1};
@@ -64,7 +65,8 @@ var gameMap = {
       
       });
     
-      wizardController.initWizardsFromMap(mapLevel.initWizardsFrom);    
+      unitController.initUnitsFromMap(mapLevel);  
+      if(mapLevel.init) mapLevel.init();  
       curriculum.initCurriculum();
     },
     

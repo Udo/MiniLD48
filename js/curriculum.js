@@ -7,7 +7,28 @@ var curriculum = {
     gameState.nextTimerCount = 0;
     
     },
-
+    
+  step : function() {
+    
+      gameState.nextTimerCount++;
+      
+      if(gameState.nextTimerIndex != -1 && gameState.nextTimerCount >= gameState.nextTimerEvent.time) {
+        
+        gameState.nextTimerCount = 0;
+        
+        gameState.currentTimerEvent = gameState.nextTimerEvent;
+        curriculum.performAction(gameState.currentTimerEvent);
+        
+        gameState.nextTimerIndex++;
+        if(gameState.nextTimerIndex >= gameState.currentLevel.curriculum.timer.length)
+          gameState.nextTimerIndex = -1;        
+        else
+          gameState.nextTimerEvent = gameState.currentLevel.curriculum.timer[gameState.nextTimerIndex];
+      
+      }
+        
+    },
+    
   goAction : function(action) {
     
     var targetPositions = [];
@@ -15,8 +36,10 @@ var curriculum = {
     
     $.each(gameState.units, function(idx, unit) {
       
-      var ps = gameMap.findFreeCell(targetPositions);
-      if(ps) unit.walkTo(ps.pos.x, ps.pos.y);
+      if(unit.type == action.who) {
+        var ps = gameMap.findFreeCell(targetPositions);
+        if(ps) unit.walkTo(ps.pos.x, ps.pos.y);
+      }
       
       });
     

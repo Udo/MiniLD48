@@ -6,7 +6,7 @@ var config = {
 
 var gameState = {
   
-  units : {},
+  units : [],
   tickCount : 0,
   gridSize : { x : 10, y : 10 },
   
@@ -20,31 +20,13 @@ var game = {
       });
     },
     
-  handleCurriculum : function() {
-    
-      gameState.nextTimerCount++;
-      if(gameState.nextTimerIndex != -1 && gameState.nextTimerCount >= gameState.nextTimerEvent.time) {
-        
-        gameState.nextTimerCount = 0;
-        
-        gameState.currentTimerEvent = gameState.nextTimerEvent;
-        curriculum.performAction(gameState.currentTimerEvent);
-        
-        gameState.nextTimerIndex++;
-        if(gameState.nextTimerIndex >= gameState.currentLevel.curriculum.timer.length)
-          gameState.nextTimerIndex = -1;        
-      
-      }
-        
-    },
-    
   tick : function() {
 
     gameState.tickCount++;
     $('#tick_timer').text(gameState.tickCount);
     
     game.moveUnits();    
-    game.handleCurriculum();
+    curriculum.step();
       
     setTimeout(game.tick, 1000);
     }

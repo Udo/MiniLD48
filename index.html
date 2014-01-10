@@ -22,10 +22,14 @@
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
+        <script src="js/ui.js"></script>
+        <script src="js/ui.magic.js"></script>
         <script src="js/game.js"></script>
         <script src="js/levels.js"></script>
         <script src="js/map.js"></script>
-        <script src="js/wizard.js"></script>
+        <script src="js/units.js"></script>
+        <script src="js/unitcontroller.js"></script>
+        <script src="js/mechanics.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/curriculum.js"></script>
     </head>
@@ -38,7 +42,8 @@
           <h1>Meddling Little Wizards</h1>
           
           <div style="text-align:center;">
-            T: <span id="tick_timer">0</span>
+            <a onclick="uiAction({ action : 'cast', unit : 'muncher' });">Conjure Muncher</a>
+            | <a onclick="uiAction({ action : 'cast', unit : 'dazzle' });">Dazzle</a>
           </div>
   
           <div id="map">
