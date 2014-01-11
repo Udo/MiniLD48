@@ -10,12 +10,11 @@ var unitTemplates = {
         if(food) 
           food.damage(1, 'munch');
         else 
-          muncher.state = 'searching';
-          
+          muncher.state = 'searching';          
         }
       else if(muncher.state == 'searching') {
         // look for the nearest food
-        var food = mechanics.findNext(muncher, 'deadbody', 10);
+        var food = mechanics.findNext(muncher, 'deadbody', 100);
         if(food) {
           var munchPosition = mechanics.nearestFreeCell(food);
           if(munchPosition) {

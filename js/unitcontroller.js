@@ -49,12 +49,14 @@ var unitController = {
     
   damage : function(unit, amount, type) {
     unit.stats.hp -= amount;
-    if(unit.stats.hp <= 0) {
+    if(unit.stats.hp <= 0) 
       unit.die();
-      }
+    else
+      uiController.showActivity(unit.pos, type);
     },
     
   die : function(unit) {
+    uiController.showActivity(unit.pos, '✝');
     unit.domElement.remove();
     var unitIndex = gameState.units.indexOf(unit);
     if(unitIndex != -1)

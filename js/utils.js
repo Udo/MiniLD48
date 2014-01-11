@@ -21,7 +21,7 @@ var distFromPos = function(pos1, pos2) {
   
 var expire = function(timeout, domElement) {
   
-  domElement.fadeOut(timeout);
+  domElement.fadeOut(timeout-100);
   setTimeout(function() { domElement.remove() }, timeout);
   
   };

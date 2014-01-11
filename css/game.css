@@ -31,15 +31,21 @@ h1 {
   left: 0;
   top: 0;
 }
-.gameunit, .mapblock, .wizdot, #cursor {
+.gameunit, .mapblock, .wizdot, #cursor, .banner {
   position: absolute;
 }
-.gameunit {
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
+.banner {
+  color: rgba(255, 255, 100, 0.5);
+  width: 120px;
+  margin-left: -48px;
+  text-align: center;
+  z-index: 500;
+}
+.gameunit, .banner {
+  -webkit-transition: left 1s ease-in-out, top 1s ease-in-out;
+  -moz-transition: left 1s ease-in-out, top 1s ease-in-out;
+  -ms-transition: left 1s ease-in-out, top 1s ease-in-out;
+  transition: left 1s ease-in-out, top 1s ease-in-out;
 }
 .wizdot {
   background: rgba(0, 70, 140, 0.25);

@@ -10,6 +10,13 @@ var uiState = {
 
 var uiController = {
 
+  showActivity : function(pos, caption) {
+    var banner = unitController.makeDomObject('banner', pos.x, pos.y);
+    banner.text(caption);
+    requestAnimationFrame(function(){ banner.css('top', (pos.y*config.tileSize)-12); });
+    expire(1000, banner);
+    },
+
   page2MapCoord : function(xp, yp, pos) {
     var xpos = xp-uiState.mapPosition.left;
     var ypos = yp-uiState.mapPosition.top;
