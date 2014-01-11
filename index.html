@@ -32,6 +32,7 @@
         <script src="js/mechanics.js"></script>
         <script src="js/utils.js"></script>
         <script src="js/curriculum.js"></script>
+        <script src="js/spells.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -42,19 +43,26 @@
           <h1>Meddling Little Wizards</h1>
           
           <div style="text-align:center;">
-            <a onclick="uiAction({ action : 'cast', unit : 'muncher' });">Conjure Muncher</a>
-            | <a onclick="uiAction({ action : 'cast', unit : 'dazzle' });">Dazzle</a>
+            <a onclick="uiAction({ action : 'cast', spell : 'muncher' });">Conjure Muncher</a>
+            | <a onclick="uiAction({ action : 'cast', spell : 'dazzle' });">Dazzle</a>
+            | <span id="info"></span>
           </div>
   
           <div id="map">
-            <div id="maproot"></div>         
+            <div id="maproot">
+              <div id="cursor"></div>
+              
+            </div>         
           </div>
+          
+          <div id="instruction"></div>
         
         </div>
         
         <script>
         
         gameMap.setDisplayContainer($('#maproot')).init().display().loadMapLevel(levelData[0]);
+        uiController.init();
         game.tick();
         
         /*for(var i = 0; i < 10; i++) {

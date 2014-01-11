@@ -19,7 +19,7 @@ levelData.push({
           '         XXX  XXXXXXXXXXXXXXXXXXXXXX  XXX          ',
           '         X      X                X      X          ',
           '         X      X     DB B       X      X          ',
-          '         X   x         xxx       X  x   X          ',
+          '         X   x        axxx       X  x   X          ',
           '             x  X  bb        bb  X  x              ',
           '         X   x  X   bbbbbbbbbb      x   X          ',
           '         X      X                X      X          ',
@@ -40,7 +40,7 @@ levelData.push({
   curriculum : {
     
     timer : [
-      { time : 1, who : 'wizard', action : 'go', to : ['a', 'b'] },
+      { time : 10, who : 'wizard', action : 'go', to : ['a', 'b'] },
       { time : 100, who : 'wizard', action : 'go', to : ['a'] },
       { time : 100, who : 'wizard', action : 'go', to : ['a', 'b'] },
       { time : 100, who : 'wizard', action : 'go', to : ['a', 'b'] },

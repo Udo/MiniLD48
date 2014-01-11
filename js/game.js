@@ -27,6 +27,16 @@ var game = {
     
     game.moveUnits();    
     curriculum.step();
+    
+    var suspicionCount = 0;
+    var unitCount = 0;
+    mechanics.all('wizard', function(wiz) {
+      unitCount++;
+      if(wiz.stats.suspicion >= 100) 
+        suspicionCount++;
+      });
+    gameState.suspicionRate = Math.round(100*suspicionCount/(unitCount));
+    $('#info').text(gameState.suspicionRate+'% suspicion');
       
     setTimeout(game.tick, 1000);
     }

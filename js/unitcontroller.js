@@ -15,7 +15,7 @@ var unitController = {
     mechanics.pathStep(wiz);
   
     if(wiz.pos.x != wiz.oldPos.x || wiz.pos.y != wiz.oldPos.y) {
-      expire(6000, unitController.makeDomObject('wizdot', wiz.oldPos.x, wiz.oldPos.y));
+      //expire(6000, unitController.makeDomObject('wizdot', wiz.oldPos.x, wiz.oldPos.y));
       wiz.domElement
         .css('left', config.tileSize*wiz.pos.x)
         .css('top', config.tileSize*wiz.pos.y);
@@ -28,15 +28,15 @@ var unitController = {
       
     },
     
-  getPath : function(wiz, x, y) {
+  getPath : function(wiz, x, y, ignoreUnits) {
     return(
-      mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, gameMap.getGrid(true)));    
+      mapState.pathFinder.findPath(wiz.pos.x, wiz.pos.y, x, y, gameMap.getGrid(ignoreUnits)));    
     },
     
   walkTo : function(wiz, x, y, whenFinishedCall) {
     
     wiz.destination = { x : x, y : y };
-    wiz.path = unitController.getPath(wiz, x, y);
+    wiz.path = unitController.getPath(wiz, x, y, true);
     if(wiz.path) {
       wiz.pathFinished = whenFinishedCall;
     }
@@ -45,6 +45,20 @@ var unitController = {
       whenFinishedCall(wiz, false);
     }
     
+    },
+    
+  damage : function(unit, amount, type) {
+    unit.stats.hp -= amount;
+    if(unit.stats.hp <= 0) {
+      unit.die();
+      }
+    },
+    
+  die : function(unit) {
+    unit.domElement.remove();
+    var unitIndex = gameState.units.indexOf(unit);
+    if(unitIndex != -1)
+      gameState.units.splice(unitIndex, 1);
     },
 
   initUnitsFromMap : function(map) {

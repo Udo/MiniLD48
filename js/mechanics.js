@@ -21,5 +21,44 @@ var mechanics = {
       }
   
     },
+    
+  nearestFreeCell : function(toUnit) {
+    for(var x = toUnit.pos.x-1; x <= toUnit.pos.x+1; x++)
+      for(var y = toUnit.pos.y-1; y <= toUnit.pos.y+1; y++) {
+      if(gameMap.getGrid(false).isWalkableAt(x, y))
+        return({ x : x, y : y });
+      }
+    return(false);
+    },
+    
+  findNext : function(fromUnit, ofType, withinDistance) {
+    var result = false;
+    mechanics.nearby(fromUnit, ofType, withinDistance, function(foundUnit) {
+      result = foundUnit;
+      });
+    return(result);
+    },
+    
+  all : function(ofType, callFunc) {
+    
+    $.each(gameState.units, function(idx, unit) {
+      if(unit.type == ofType)
+        callFunc(unit);
+      });
+    
+    },
+    
+  nearby : function(fromUnit, toUnitType, maxDist, func) {
+    
+    $.each(gameState.units, function(idx, unit) {
+      
+      var calcDistance = distFromPos(fromUnit.pos, unit.pos);
+      
+      if((!toUnitType || unit.type == toUnitType) && calcDistance <= maxDist) {
+        func(unit, calcDistance);
+        }
+      
+      });
+    },
   
   };
