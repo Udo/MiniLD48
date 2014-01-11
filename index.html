@@ -49,7 +49,9 @@
 
               </td>
               <td valign="middle">
-
+                <div id="spellMenu">
+                  <div onmouseover="uiController.showInstruction('Conjure Muncher');" onmouseout="uiController.showInstruction('');" onclick="uiAction({ action : 'cast', spell : 'muncher' });">M</div>
+                </div>
               </td>
               <td valign="middle">
                 <span id="info"></span>
@@ -57,11 +59,6 @@
             </tr>
           </table>
           
-          <div style="text-align:center;">
-            <a onclick="uiAction({ action : 'cast', spell : 'muncher' });">Conjure Muncher</a>
-            | <a onclick="uiAction({ action : 'cast', spell : 'dazzle' });">Dazzle</a>
-          </div>
-  
           <div id="map">
             <div id="maproot">
               <div id="cursor"></div>              
@@ -69,6 +66,7 @@
           </div>
           
           <div id="instruction"></div>
+          
           <div id="msgbox"><div><div id="msgbox-inner">
             <div id="msgbox-content"></div>
             <div style="text-align:center">

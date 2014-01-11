@@ -23,6 +23,10 @@ var uiController = {
     expire(1000, banner);
     },
     
+  showInstruction : function(caption) {
+    $('#instruction').html(caption);
+    },
+    
   showMessage : function(content, afterOKFunc) {
     gameState.nextTick = function() {
       game.pause();
@@ -83,7 +87,7 @@ var uiController = {
     uiState.afterClickCallback = whenDoneFunc;
     uiState.mapClickHandler = uiController.onPlacementClick;
     if(p.caption)
-      $('#instruction').text(p.caption);
+      uiController.showInstruction(p.caption);
     uiController.mode('pick');    
     },
   
