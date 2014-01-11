@@ -6,7 +6,7 @@ body {
   margin: 0;
 }
 * {
-  font-family: Trebuchet MS, Arial, sans-serif;
+  font-family: Georgia, Times New Roman, serif;
 }
 #page-wrap {
   padding: 8px;
@@ -31,7 +31,7 @@ h1 {
   left: 0;
   top: 0;
 }
-.gameunit, .mapblock, .wizdot, #cursor, .banner {
+.gameunit, .mapblock, .wizdot, #cursor, .banner, .label {
   position: absolute;
 }
 .banner {
@@ -40,6 +40,14 @@ h1 {
   margin-left: -48px;
   text-align: center;
   z-index: 500;
+}
+.label {
+  color: rgba(50, 0, 0, 0.3);
+  width: 240px;
+  margin-left: -108px;
+  text-align: center;
+  z-index: 200;
+  font-weight: bold;
 }
 .gameunit, .banner {
   -webkit-transition: left 1s ease-in-out, top 1s ease-in-out;

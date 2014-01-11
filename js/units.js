@@ -14,6 +14,7 @@ var unitTemplates = {
         }
       else if(muncher.state == 'searching') {
         // look for the nearest food
+        uiController.showActivity(muncher.pos, '?');
         var food = mechanics.findNext(muncher, 'deadbody', 100);
         if(food) {
           var munchPosition = mechanics.nearestFreeCell(food);
@@ -46,7 +47,12 @@ var unitTemplates = {
   wizard : {
   
     suspect : function(wiz, amount) {
-      if(wiz.stats.suspicion < 100) wiz.stats.suspicion += amount; else wiz.stats.suspicion = 100;
+      if(wiz.stats.suspicion < 100) {
+        uiController.showActivity(wiz.pos, '!');
+        wiz.stats.suspicion += amount; 
+        }
+      else 
+        wiz.stats.suspicion = 100;
       },
     
     update : function(wiz) {
@@ -108,5 +114,13 @@ var makeUnitsFromAll = function(utype, ch) {
       makeUnit({ type : utype, pos : { x : v.pos.x, y : v.pos.y } });
       });
       
-}
+  };
+
+var makeLabelFrom = function(ch, labelText) {
+  
+  if(mapState.positionIndex[ch]) $.each(mapState.positionIndex[ch], function(idx, v) {
+      uiController.makeLabel(v.pos, labelText);
+      });
+      
+  };
 

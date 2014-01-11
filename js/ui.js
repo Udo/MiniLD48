@@ -10,6 +10,11 @@ var uiState = {
 
 var uiController = {
 
+  makeLabel : function(pos, caption) {
+    var label = unitController.makeDomObject('label', pos.x, pos.y);
+    label.text(caption);
+    },
+
   showActivity : function(pos, caption) {
     var banner = unitController.makeDomObject('banner', pos.x, pos.y);
     banner.text(caption);

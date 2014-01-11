@@ -6,7 +6,7 @@ levelData.push({
           'XXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXXXXXXXXXXXXXX',
           'X    xa xa xa xa      X    X      xa xa xa xa     X',
           'X A  xa xa xa xa      X    X      xa xa xa xa  A  X',
-          'X Ax                                           xA X',
+          'X Ax      2                            3       xA X',
           'X    xa xa xa xa   A  X    X  A   xa xa xa xa     X',
           'X    xa xa xa xa      X    X      xa xa xa xa     X',
           'XXXXXXXXXXXXXXXXXXXXXXX    XXXXXXXXXXXXXXXXXXXXXXXX',
@@ -19,8 +19,8 @@ levelData.push({
           '         XXX  XXXXXXXXXXXXXXXXXXXXXX  XXX          ',
           '         X      X                X      X          ',
           '         X      X     DB B       X      X          ',
-          '         X   x        axxx       X  x   X          ',
-          '             x  X  bb        bb  X  x              ',
+          '         X   x         xxx       X  x   X          ',
+          '             x  X  bb   1    bb  X  x              ',
           '         X   x  X   bbbbbbbbbb      x   X          ',
           '         X      X                X      X          ',
           '         X      X                X      X          ',
@@ -34,6 +34,9 @@ levelData.push({
   init : function() {
     
     makeUnitsFromAll('deadbody', 'D');
+    makeLabelFrom('1', 'The Conservatory');
+    makeLabelFrom('2', 'Jabberworthy Auditorium');
+    makeLabelFrom('3', 'Potion Laboratorium');
     
     },
   
