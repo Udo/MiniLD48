@@ -1,16 +1,44 @@
+@font-face {
+  font-family: wizFont;
+  src: url(OldLondon.otf);
+}
+
 body {
-  background: #000;
-  color: #876;
-  font-size: 16px;
+  background: url(../img/bg.png);
+  color: #ca9;
+  font-size: 20px;
   padding:0;
   margin: 0;
 }
-* {
-  font-family: Georgia, Times New Roman, serif;
+*, input {
+  font-family: wizFont, Georgia, Times New Roman, serif;
+}
+input[type=button] {
+  padding: 16px;
+  border: 1px solid #666;
+  border-radius: 6px;
+  background: rgba(40, 20, 0, 0.2);
+  box-shadow: 0 0 8px #333;
+}
+input[type=button]:hover {
+  color: #ffa;
+  background: rgba(0, 0, 0, 0.6);
+}
+#menuTable tr {
+}
+#menuTable td {
+  min-height: 42px;
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0px 0px 16px rgba(0,0,0,0.75);
+  min-width: 100px;
+  background: rgba(0,0,0,0.5);
+  text-align: center;
 }
 #page-wrap {
   padding: 8px;
-  max-width: 1280px;
+  padding-top: 0px;
+  width: 1260px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -18,8 +46,12 @@ h1 {
   margin: 0;
   border-bottom: 1px solid #876;
   margin-bottom: 8px;
+  font-weight:normal;
+  text-align: center;
 }
 #map {
+  border-radius: 32px;
+  box-shadow: 0px 0px 32px #000;
   background: url('../img/paper2.jpg');
   height: 700px;
   margin: 8px;
@@ -102,6 +134,45 @@ a:hover {
   background: rgba(250, 250, 0, 0.2);
   margin-left: -4px;
   margin-top: -4px;
+}
+
+#msgbox {
+  position: absolute;
+  top: 200px;
+  left:50%;
+  display:none;
+  z-index: 2000;
+}
+
+#msgbox > div {
+  width: 532px;
+  margin-left: -282px;
+  height: 332px;
+  border:1px solid gray;
+  background: url(../img/marble.jpg);
+  padding: 32px;
+  border-radius: 32px;
+  box-shadow: 8px 8px 32px #000;
+}
+
+#msgbox-inner {
+  background: url('../img/oldpaper.jpg');
+  min-height: 300px;
+  border: 1px solid #666;
+  width: 500px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 16px #000;
+}
+
+#msgbox-content {
+  color: rgba(0,0,0,0.6);
+  height: 250px;
+  overflow:auto;
+}
+
+.goal {
+  color: #300;
 }
 
 /************ unit styles ***************/

@@ -16,15 +16,6 @@ var gameMap = {
     return(this);
     },
     
-  display : function() {
-
-    return(this);
-    },
-    
-  update : function() {
-    
-    },
-    
   makeCell : function(cellInfo) {
     
     mapState.container.append('<div class="'+cellInfo.sclass+'" style="left:'+(cellInfo.pos.x*config.tileSize)+'px;top:'+(cellInfo.pos.y*config.tileSize)+'px;"> </div>');
@@ -33,6 +24,7 @@ var gameMap = {
     },
     
   loadMapLevel : function(mapLevel) {
+    mapState.container.html('<div id="cursor"></div>');
     gameState.tickCount = 0;
     gameState.units = [];
     gameState.currentLevel = mapLevel;

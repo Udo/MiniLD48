@@ -19,7 +19,7 @@ levelData.push({
           '         XXX  XXXXXXXXXXXXXXXXXXXXXX  XXX          ',
           '         X      X                X      X          ',
           '         X      X     DB B       X      X          ',
-          '         X   x       aaxxx       X  x   X          ',
+          '         X   x         xxx       X  x   X          ',
           '             x  X  bb   1    bb  X  x              ',
           '         X   x  X   bbbbbbbbbb      x   X          ',
           '         X      X                X      X          ',
@@ -37,6 +37,16 @@ levelData.push({
     makeLabelFrom('1', 'The Conservatory');
     makeLabelFrom('2', 'Jabberworthy Auditorium');
     makeLabelFrom('3', 'Potion Laboratorium');
+    
+    uiController.showMessage('<p>Welcome, Dark Lord.</p>'+
+      '<p>You have been silently plotting and '+
+      'scheming against the puny little wizard students of this school for years. '+
+      'Yada yada yada, now there is a dead body in the Conservatory.</p>'+
+      '<p>To protect your dark secrets, you need to dispose of it before the students find it.</p>', function() {
+      uiController.showMessage('<p>You must hurry, oh Dark Lord, before the students arrive to Botanomancy class.</p>'+
+        '<p>Select the "Muncher" spell and cast it near the body. A muncher is a monster that disposes of inconvenient bodies.</p>'+
+        '<p class="goal">Goal: dispose of the body before 50% of students find out.</p>');  
+      });
     
     },
     

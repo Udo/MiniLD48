@@ -12,9 +12,9 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/normalize.css"> 
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/game.css">
+        <link rel="stylesheet" href="css/style.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
@@ -39,28 +39,48 @@
         <![endif]-->
         <div id="page-wrap">
 
-          <h1>Meddling Little Wizards</h1>
+          <div style="text-align: center;">
+            <img src="img/mlw-logo-3.png" id="logo" height="70" title="meddling little wizards"/>
+          </div>
+          
+          <table id="menuTable" width="100%" cellpadding="8">
+            <tr>
+              <td valign="middle">
+
+              </td>
+              <td valign="middle">
+
+              </td>
+              <td valign="middle">
+                <span id="info"></span>
+              </td>
+            </tr>
+          </table>
           
           <div style="text-align:center;">
             <a onclick="uiAction({ action : 'cast', spell : 'muncher' });">Conjure Muncher</a>
             | <a onclick="uiAction({ action : 'cast', spell : 'dazzle' });">Dazzle</a>
-            | <span id="info"></span>
           </div>
   
           <div id="map">
             <div id="maproot">
-              <div id="cursor"></div>
-              
+              <div id="cursor"></div>              
             </div>         
           </div>
           
           <div id="instruction"></div>
+          <div id="msgbox"><div><div id="msgbox-inner">
+            <div id="msgbox-content"></div>
+            <div style="text-align:center">
+              <input type="button" value="OK" onclick="$('#msgbox').fadeOut(300);if(uiState.msgBoxClick)uiState.msgBoxClick();uiState.msgBoxClick=false;"/>
+            </div>
+          </div></div></div>
         
         </div>
         
         <script>
         
-        gameMap.setDisplayContainer($('#maproot')).init().display().loadMapLevel(levelData[0]);
+        gameMap.setDisplayContainer($('#maproot')).init().loadMapLevel(levelData[0]);
         uiController.init();
         game.tick();
         

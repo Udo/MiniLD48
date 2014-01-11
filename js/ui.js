@@ -5,6 +5,7 @@ var uiState = {
   cursorPos : { x : 0, y : 0 },
   mapClickHandler : false,
   afterClickCallback : false,
+  msgBoxClick : false,
   
   };
 
@@ -21,7 +22,19 @@ var uiController = {
     requestAnimationFrame(function(){ banner.css('top', (pos.y*config.tileSize)-12); });
     expire(1000, banner);
     },
-
+    
+  showMessage : function(content, afterOKFunc) {
+    gameState.nextTick = function() {
+      game.pause();
+      $('#msgbox-content').html(content);
+      $('#msgbox').fadeIn(300);    
+      uiState.msgBoxClick = function() {
+        game.run();
+        if(afterOKFunc) afterOKFunc();
+        };  
+      };
+    },
+    
   page2MapCoord : function(xp, yp, pos) {
     var xpos = xp-uiState.mapPosition.left;
     var ypos = yp-uiState.mapPosition.top;

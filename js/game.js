@@ -6,6 +6,7 @@ var config = {
 
 var gameState = {
   
+  currentLevelIndex : 0,
   units : [],
   tickCount : 0,
   gridSize : { x : 10, y : 10 },
@@ -21,6 +22,11 @@ var game = {
     },
     
   tick : function() {
+  
+    if(gameState.nextTick) {
+      gameState.nextTick();
+      gameState.nextTick = false;
+      }
 
     if(!gameState.stopped) {
       gameState.tickCount++;
@@ -49,12 +55,40 @@ var game = {
     
   lose : function() {
     gameState.stopped = true;
-    $('#instruction').text('All is lost! They found you out. You\'ll have time to think about your misdeeds in the Horrible Prison of Sokoban...');
+    uiController.showMessage(
+      'All is lost! They found you out. You\'ll have time to think about your misdeeds in the Horrible Prison of Sokoban...', function() {
+      game.restart();  
+      });
     },
   
   win : function() {
     gameState.stopped = true;
-    $('#instruction').text('You managed to survive... this time.');
+    uiController.showMessage('You managed to survive... this time.', function() {
+      game.nextLevel();
+      });
+    },
+    
+  restart : function() {
+    window.location.reload(false);    
+    },
+    
+  run : function() {
+    gameState.stopped = false;    
+    },
+    
+  pause : function() {
+    gameState.stopped = true;    
+    },
+  
+  nextLevel : function() {  
+    gameState.currentLevelIndex++;
+    if(gameState.currentLevelIndex >= levelData.length) {
+      uiController.showMessage('Sorry, no more levels!');  
+      }
+    else {
+      gameMap.loadMapLevel(levelData[gameState.currentLevelIndex]);
+      game.run();
+      }
     },
   
   };
