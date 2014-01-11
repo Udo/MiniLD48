@@ -22,23 +22,39 @@ var game = {
     
   tick : function() {
 
-    gameState.tickCount++;
-    $('#tick_timer').text(gameState.tickCount);
-    
-    game.moveUnits();    
-    curriculum.step();
-    
-    var suspicionCount = 0;
-    var unitCount = 0;
-    mechanics.all('wizard', function(wiz) {
-      unitCount++;
-      if(wiz.stats.suspicion >= 100) 
-        suspicionCount++;
-      });
-    gameState.suspicionRate = Math.round(100*suspicionCount/(unitCount));
-    $('#info').text(gameState.suspicionRate+'% suspicion');
+    if(!gameState.stopped) {
+      gameState.tickCount++;
+      $('#tick_timer').text(gameState.tickCount);
+      
+      game.moveUnits();    
+      curriculum.step();
+      
+      var suspicionCount = 0;
+      gameState.unitCounts = {};
+      mechanics.all(false, function(wiz) {
+        if(wiz.stats.suspicion >= 100) suspicionCount++;
+        if(gameState.unitCounts[wiz.type])
+          gameState.unitCounts[wiz.type]++;
+        else
+          gameState.unitCounts[wiz.type] = 1; 
+        });
+      gameState.suspicionRate = Math.round(100*suspicionCount/(gameState.unitCounts.wizard));
+      $('#info').text(gameState.suspicionRate+'% suspicion');
+  
+      gameState.currentLevel.step();
+    }
       
     setTimeout(game.tick, 1000);
-    }
+    },
+    
+  lose : function() {
+    gameState.stopped = true;
+    $('#instruction').text('All is lost! They found you out. You\'ll have time to think about your misdeeds in the Horrible Prison of Sokoban...');
+    },
+  
+  win : function() {
+    gameState.stopped = true;
+    $('#instruction').text('You managed to survive... this time.');
+    },
   
   };

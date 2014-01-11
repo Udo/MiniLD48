@@ -19,7 +19,7 @@ levelData.push({
           '         XXX  XXXXXXXXXXXXXXXXXXXXXX  XXX          ',
           '         X      X                X      X          ',
           '         X      X     DB B       X      X          ',
-          '         X   x         xxx       X  x   X          ',
+          '         X   x       aaxxx       X  x   X          ',
           '             x  X  bb   1    bb  X  x              ',
           '         X   x  X   bbbbbbbbbb      x   X          ',
           '         X      X                X      X          ',
@@ -38,6 +38,11 @@ levelData.push({
     makeLabelFrom('2', 'Jabberworthy Auditorium');
     makeLabelFrom('3', 'Potion Laboratorium');
     
+    },
+    
+  step : function() {
+    if(gameState.suspicionRate >= 50) game.lose();
+    if(!gameState.unitCounts.deadbody) game.win();
     },
   
   curriculum : {

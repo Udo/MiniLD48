@@ -42,7 +42,7 @@ var mechanics = {
   all : function(ofType, callFunc) {
     
     $.each(gameState.units, function(idx, unit) {
-      if(unit.type == ofType)
+      if(ofType == false || unit.type == ofType)
         callFunc(unit);
       });
     
