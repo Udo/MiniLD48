@@ -41,6 +41,10 @@ var unitTemplates = {
         wiz.on.suspect(wiz, (100-dst*20));
         });
       },
+      
+    create : function(db) {
+      db.img = 'deadbody.png';
+      },
     
     },
   
@@ -65,6 +69,7 @@ var unitTemplates = {
       },
 
     create : function(wiz) {
+      wiz.img = 'wizard3.png';
       },
     
     },
@@ -101,7 +106,7 @@ var makeUnit = function(wizParams) {
     unitObject.on = {};
   
   gameState.units.push(unitObject);
-  unitObject.domElement = unitController.makeDomObject('gameunit '+unitObject.type, unitObject.x, unitObject.y);
+  unitObject.domElement = unitController.makeDomObject('gameunit '+unitObject.type, unitObject.x, unitObject.y, unitObject);
     
   return(unitObject);
   

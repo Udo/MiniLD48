@@ -1,11 +1,14 @@
 var unitController = {
   
-  makeDomObject : function(sclass, xp, yp) {
-  
+  makeDomObject : function(sclass, xp, yp, unit) {
+
     var result = $('<div style="'+
       'left:'+(config.tileSize*xp)+'px;'+
       'top:'+(config.tileSize*yp)+'px;'+
-      '" class="'+sclass+'"></div>').appendTo(mapState.container);
+      '" class="'+sclass+'">'+
+      (unit && unit.img ? '<img src="img/'+unit.img+'" height="24"/>' : '')+
+      '</div>').appendTo(mapState.container);
+
     return(result);
   
     },
