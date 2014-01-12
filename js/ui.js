@@ -20,6 +20,7 @@ var uiController = {
     var banner = unitController.makeDomObject('banner', pos.x, pos.y);
     banner.text(caption);
     requestAnimationFrame(function(){ banner.css('top', (pos.y*config.tileSize)-12); });
+    if(sounds[caption]) sounds[caption].play();
     expire(1000, banner);
     },
     

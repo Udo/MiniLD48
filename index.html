@@ -18,11 +18,13 @@
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/howler.js"></script>
         <script src="js/pathfinding-browser.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
         <script src="js/ui.js"></script>
+        <script src="js/sounds.js"></script>
         <script src="js/game.js"></script>
         <script src="js/levels.js"></script>
         <script src="js/map.js"></script>
@@ -43,14 +45,24 @@
             <img src="img/mlw-logo-3.png" id="logo" height="70" title="meddling little wizards"/>
           </div>
           
-          <table id="menuTable" width="100%" cellpadding="8">
+          <div id="map">
+            <div id="maproot">
+              <div id="cursor"></div>              
+            </div>         
+          </div>
+          
+          <table id="menuTable" width="90%" align="center" cellspacing="16">
             <tr>
               <td valign="middle">
 
               </td>
               <td valign="middle">
                 <div id="spellMenu">
-                  <div onmouseover="uiController.showInstruction('Conjure Muncher');" onmouseout="uiController.showInstruction('');" onclick="uiAction({ action : 'cast', spell : 'muncher' });">M</div>
+                  <div onmouseover="uiController.showInstruction('Conjure Muncher');" 
+                       onmouseout="uiController.showInstruction('');" onclick="uiAction({ action : 'cast', spell : 'muncher' });">
+                    <div class="smallText">Muncher</div>
+                    <div class="spellSymbol">M</div>
+                  </div>
                 </div>
               </td>
               <td valign="middle">
@@ -58,12 +70,6 @@
               </td>
             </tr>
           </table>
-          
-          <div id="map">
-            <div id="maproot">
-              <div id="cursor"></div>              
-            </div>         
-          </div>
           
           <div id="instruction"></div>
           

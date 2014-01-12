@@ -175,19 +175,29 @@ a:hover {
   color: #300;
 }
 
-#spellMenu div {
+#spellMenu > div {
   cursor:pointer;
   display: inline-block;
   padding: 6px;
-  width: 32px;
+  width: 50px;
   border-radius: 12px;
   background: rgba(100,100,250,0.2);
   border: rgba(100,150,250,0.4);
   color: rgba(100,150,250,0.6);
+  text-align:center;
 }
 
-#spellMenu div:hover {
+#spellMenu > div:hover {
   color: #fff;
+}
+#spellMenu > div div {
+  text-align:center;
+}
+
+.smallText {
+  font-family: Tahoma, Arial;
+  font-size: 10px;
+  color: #ca9;
 }
 
 /************ unit styles ***************/

@@ -45,7 +45,10 @@ var game = {
           gameState.unitCounts[wiz.type] = 1; 
         });
       gameState.suspicionRate = Math.round(100*suspicionCount/(gameState.unitCounts.wizard));
-      $('#info').text(gameState.suspicionRate+'% suspicion');
+      var infoText = gameState.suspicionRate+'% suspicion';
+      if(curriculum.countDown)
+        infoText += ' | next lesson: '+curriculum.countDown;
+      $('#info').text(infoText);
   
       gameState.currentLevel.step();
     }
@@ -61,11 +64,14 @@ var game = {
       });
     },
   
-  win : function() {
+  win : function(winMessage) {
     gameState.stopped = true;
-    uiController.showMessage('You managed to survive... this time.', function() {
+    if(winMessage)
+      uiController.showMessage('You managed to survive... this time.', function() {
+        game.nextLevel();
+        });
+    else
       game.nextLevel();
-      });
     },
     
   restart : function() {

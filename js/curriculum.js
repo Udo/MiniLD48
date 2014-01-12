@@ -12,10 +12,11 @@ var curriculum = {
     
       gameState.nextTimerCount++;
       
+      curriculum.countDown = gameState.nextTimerEvent.time - gameState.nextTimerCount;
+
       if(gameState.nextTimerIndex != -1 && gameState.nextTimerCount >= gameState.nextTimerEvent.time) {
         
         gameState.nextTimerCount = 0;
-        
         gameState.currentTimerEvent = gameState.nextTimerEvent;
         curriculum.performAction(gameState.currentTimerEvent);
         
@@ -42,8 +43,16 @@ var curriculum = {
       }
       
       });
-    
+          
   },
+
+  jumpAction : function(action) {
+    
+    gameState.nextTimerCount = 0;
+    gameState.nextTimerIndex = 0;
+    gameState.nextTimerEvent = gameState.currentLevel.curriculum.timer[0];
+        
+    },
   
   performAction : function(action) {
     
